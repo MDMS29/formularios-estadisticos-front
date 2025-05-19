@@ -1,15 +1,13 @@
-import { lazy, Suspense } from "react"
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Loader from "./components/loader/Loader"
-import LayoutGeneral from "./layout/general/LayoutGeneral"
+import { lazy, Suspense } from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Loader from "./components/loader/Loader";
+import LayoutGeneral from "./layout/general/LayoutGeneral";
 // import Formularios from "./app/formularios/Formularios"
 
-const Dashboard = lazy(() => import("./app/dashboard/Dashboard"))
-const Formulario = lazy(() => import("./app/formularios/Formulario"))
-
+const Dashboard = lazy(() => import("./app/dashboard/PageDashboard"));
+const Formulario = lazy(() => import("./app/formularios/Formulario"));
 
 function App() {
-
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
@@ -21,7 +19,7 @@ function App() {
         </Routes>
       </Suspense>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
