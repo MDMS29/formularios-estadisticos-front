@@ -1,7 +1,8 @@
 import { lazy, Suspense } from "react"
 import { BrowserRouter, Route, Routes } from "react-router-dom"
-import Loader from "./components/loader/Loader"
-import LayoutGeneral from "./layout/general/LayoutGeneral"
+import Module4 from "./app/module-4/module-4"
+import Loader from "./shared/components/loader/Loader"
+import LayoutGeneral from "./shared/layout/general/LayoutGeneral"
 // import Formularios from "./app/formularios/Formularios"
 
 const Dashboard = lazy(() => import("./app/dashboard/Dashboard"))
@@ -16,6 +17,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LayoutGeneral />}>
             <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/module-4" element={<Module4 />} />
             <Route path="/formulario" element={<Formulario />} />
           </Route>
         </Routes>
