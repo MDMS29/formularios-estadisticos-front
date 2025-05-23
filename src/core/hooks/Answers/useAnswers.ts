@@ -1,13 +1,23 @@
 import { useCallback, useState } from "react"
 import api from "../../api/api"
 import type { IAnswer } from "../../../data/interface/answer"
-import { ListAnswersFilter } from "../../../data/constants/answers-filter"
+// import { ListAnswersFilter } from "../../../data/constants/answers-filter"
+import { CalculateStatistics } from "../../../data/tools/calculate-statics"
 
 export const useAnswers = () => {
   const [answers, setAnswers] = useState<Array<IAnswer>>([])
-  const [answersFilter, setAnswersFilter] = useState<Array<IAnswer>>(ListAnswersFilter)
+  const [answersFilter, setAnswersFilter] = useState<Array<IAnswer>>([])
   const [loadingAnswers, setLoadingAnswers] = useState(false)
   const [errorAnswers, setErrorAnswers] = useState<string | null>(null)
+  const [varianzaDesviacionModa, setVarianzaDesviacionModa] = useState({
+    varianza: 0,
+    desviacion: 0,
+    moda: {
+      pregunta: "",
+      cantidad: 0,
+      opcion: "",
+    },
+  })
 
   const ReadAnswers = useCallback(
     async () => {
@@ -28,6 +38,12 @@ export const useAnswers = () => {
       try {
         const { data } = await api.get<Array<IAnswer>>(`/answers/${QuestionId}`)
         setAnswersFilter(data)
+
+
+
+        const valoresRespuesta = CalculateStatistics(data)
+        setVarianzaDesviacionModa((prev) => ({ ...prev, varianza: valoresRespuesta.varianza, desviacion: valoresRespuesta.desviacion, moda: valoresRespuesta.moda }))
+
       } catch (error: any) {
         setErrorAnswers(error)
       } finally {
@@ -35,5 +51,5 @@ export const useAnswers = () => {
       }
     }, [])
 
-  return { answers, answersFilter, loadingAnswers, errorAnswers, ReadAnswers, ReadAnswersFilter }
+  return { answers, answersFilter, loadingAnswers, errorAnswers, ReadAnswers, ReadAnswersFilter, varianzaDesviacionModa }
 }

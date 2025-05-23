@@ -1,24 +1,24 @@
 import type { IAnswer } from "../interface/answer";
 
-type IntervaloConfianza = {
-    proporcion: number;
-    limiteInferior: number;
-    limiteSuperior: number;
+export type IntervaloConfianza = {
+  proporcion: number;
+  limiteInferior: number;
+  limiteSuperior: number;
 };
 
 export function CalculateIC(respuesta: IAnswer, z = 1.96): IntervaloConfianza {
-    const { cantidad: x, total_respuestas: n } = respuesta;
+  const { cantidad: x, total_respuestas: n } = respuesta;
 
-    if (n === 0) throw new Error("El total de respuestas no puede ser cero.");
+  if (n === 0) throw new Error("El total de respuestas no puede ser cero.");
 
-    const proportion = x / n;
-    const margenError = z * Math.sqrt((proportion * (1 - proportion)) / n);
+  const proportion = x / n;
+  const margenError = z * Math.sqrt((proportion * (1 - proportion)) / n);
 
-    return {
-        proporcion: proportion,
-        limiteInferior: Math.max(0, proportion - margenError),
-        limiteSuperior: Math.min(1, proportion + margenError),
-    };
+  return {
+    proporcion: proportion,
+    limiteInferior: Math.max(0, proportion - margenError),
+    limiteSuperior: Math.min(1, proportion + margenError),
+  };
 }
 
 export const calcularDesviacionEstandar = (valores: Array<number>): number => {

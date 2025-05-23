@@ -6,7 +6,9 @@ const LayoutGeneral = () => {
     return (
         <main className='contenedor-layout'>
             <Sidebar />
-            <Outlet />
+            <main style={{ flex: 1, padding: '1rem', overflowY: 'auto' }}>
+                <Outlet />
+            </main>
         </main>
     )
 }
