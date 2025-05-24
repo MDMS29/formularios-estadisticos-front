@@ -1,9 +1,8 @@
-import Dashboard from "../dashboard/Components/Dashboard";
-import Loading from "../dashboard/Components/Loading";
-import { useDashboard } from "../dashboard/hooks/useDashboard";
-import "./assets/index.css";
+import Dashboard from "./Components/Dashboard";
+import Loading from "./Components/Loading";
+import { useDashboard } from "./hooks/useDashboard";
 
-const Formulario = () => {
+function PageDashboard() {
   const {
     cardsInfo,
     dataTable,
@@ -13,7 +12,7 @@ const Formulario = () => {
     questions,
     selectedQuestion,
     selectedQuestionId,
-  } = useDashboard({ surveyType: 2 }); // la 2 es para la encuesta de los datos encuestados
+  } = useDashboard({ surveyType: 1 }); // la 1 es para la encuesta de los datos quemados
 
   return loading ? (
     <Loading />
@@ -32,6 +31,6 @@ const Formulario = () => {
       {/* ) : null} */}
     </>
   );
-};
+}
 
-export default Formulario;
+export default PageDashboard;

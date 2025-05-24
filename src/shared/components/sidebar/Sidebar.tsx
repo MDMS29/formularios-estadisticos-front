@@ -18,7 +18,7 @@ const Sidebar = () => {
                 <ul>
                     <li><Link to={"/dashboard"}><LayoutDashboard /> {openSidebar && <p> Dashboard</p>}</Link></li>
                     <li><Link to={"/module-4"}><ClipboardList /> {openSidebar && <p> Module 4</p>}</Link></li>
-                    <li><Link to={"/formulario"}><ClipboardList /> {openSidebar && <p> Formularios</p>}</Link></li>
+                    {/* <li><Link to={"/formulario"}><ClipboardList /> {openSidebar && <p> Formularios</p>}</Link></li> */}
                 </ul>
             </section>
         </div>

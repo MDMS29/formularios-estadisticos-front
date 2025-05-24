@@ -9,11 +9,12 @@
   background-color: #212741;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
-body, div#root{
+body,
+div#root {
   display: flex;
   place-items: center;
   width: 100%;

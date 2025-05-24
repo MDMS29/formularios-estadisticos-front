@@ -5,12 +5,10 @@ import Loader from "./shared/components/loader/Loader"
 import LayoutGeneral from "./shared/layout/general/LayoutGeneral"
 // import Formularios from "./app/formularios/Formularios"
 
-const Dashboard = lazy(() => import("./app/dashboard/Dashboard"))
-const Formulario = lazy(() => import("./app/formularios/Formulario"))
-
+const Dashboard = lazy(() => import("./app/dashboard/PageDashboard"));
+// const Formulario = lazy(() => import("./app/formularios/Formulario"));
 
 function App() {
-
   return (
     <BrowserRouter>
       <Suspense fallback={<Loader />}>
@@ -18,12 +16,12 @@ function App() {
           <Route path="/" element={<LayoutGeneral />}>
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/module-4" element={<Module4 />} />
-            <Route path="/formulario" element={<Formulario />} />
+            {/* <Route path="/formulario" element={<Formulario />} /> */}
           </Route>
         </Routes>
       </Suspense>
     </BrowserRouter>
-  )
+  );
 }
 
-export default App
+export default App;
