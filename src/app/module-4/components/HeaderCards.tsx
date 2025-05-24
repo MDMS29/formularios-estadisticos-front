@@ -1,5 +1,3 @@
-import React from 'react'
-
 interface IVarianzaDesviacionModa {
     varianza: number;
     desviacion: number;
