@@ -163,20 +163,19 @@ const Module4 = () => {
 
     return (
         <div className="w-full">
-            {/* <div className=" bg-[#13132F] rounded-lg items-center justify-center flex flex-col p-10"> */}
-            <div className=' bg-[#13132F] flex justify-between items-center h-[5%] rounded-2xl m-10 p-10'>
-                <p className="text-4xl font-bold text-center text-white">{answersFilter.length > 0 ? answersFilter[0].pregunta : 'Seleccione una pregunta'}</p>
-                <div className='flex gap-5'>
+            <div className=' bg-[#13132F] flex justify-between items-center h-[5%] rounded-2xl m-10 p-10 max-sm:flex-wrap-reverse max-sm:p-4 max-sm:m-0'>
+                <p className="text-4xl font-bold text-center text-white max-sm:mt-3">{answersFilter.length > 0 ? answersFilter[0].pregunta : 'Seleccione una pregunta'}</p>
+                <div className='flex gap-5 flex-wrap'>
                     <Select options={ListQuestions} onChange={handleSelectChange} />
-                    <Select options={ListAnswersFilter} onChange={handleSelectChangeOption} disabled={notSelectedQuestion} />
+                    <Select options={ListAnswersFilter} onChange={handleSelectChangeOption} disabled={notSelectedQuestion} className='max-sm:w-full' />
                 </div>
             </div>
             {answersFilter.length > 0 && (
-                <div className='bg-[#13132F] rounded-2xl m-10 p-10 overflow-auto'>
+                <div className='bg-[#13132F] rounded-2xl m-10 p-10 overflow-auto max-sm:p-4 max-sm:m-0 max-sm:mt-3'>
                     {/* CARDS VARIANZA, DESVIACION Y MODA */}
                     <HeaderCards data={varianzaDesviacionModa} />
 
-                    <div className='w-full flex gap-7'>
+                    <div className='w-full flex gap-7 max-lg:flex-col'>
                         {/* CARDS */}
                         <TotalAnswers data={answersFilter} />
 
@@ -187,14 +186,13 @@ const Module4 = () => {
                         <div className='flex flex-col gap-7 w-auto'>
                             <StaticsTable optionFilter={optionFilter} ResultIC={ResultIC} />
 
-                            <div className='w-[500px] h-[375px] px-7 bg-[#212741] rounded-lg shadow-xl flex justify-center items-center'>
+                            <div className='w-[500px] h-[375px] px-7 bg-[#212741] rounded-lg shadow-xl flex justify-center items-center max-lg:w-auto '>
                                 <Pie data={data} options={options} />
                             </div>
                         </div>
                     </div>
                 </div>
             )}
-            {/* </div> */}
         </div>
     )
 }

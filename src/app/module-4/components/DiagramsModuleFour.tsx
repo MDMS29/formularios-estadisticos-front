@@ -3,7 +3,7 @@ import { Bar, Line } from 'react-chartjs-2'
 
 const DiagramsModuleFour = ({ data, options }: { data: DataDiagrams[], options: OptionsDiagrams }) => {
     return (
-        <div className='flex flex-col gap-7 w-auto'>
+        <div className='flex flex-col gap-7 w-auto max-lg:overflow-auto'>
 
             {
                 data.map((item, index) => (
