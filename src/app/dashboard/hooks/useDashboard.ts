@@ -58,21 +58,59 @@ export const useDashboard = ({ surveyType }: { surveyType: 1 | 2 }) => {
         setDataTable(calculateStatistics);
         setFilteredData(surveyData);
 
-        const updatedCards = cardsInfo.map((card, index) => {
-          if (index === 2 && surveyData[0]) {
+        let updatedCards: CardInfo[] = [];
+        if (surveyData?.length === 2) {
+          updatedCards = cardsInfo.map((card, index) => {
+            if (index === 2 && surveyData[0]) {
+              return {
+                ...card,
+                value: surveyData[0].total_respuestas?.toString() ?? "",
+              };
+            }
+
             return {
               ...card,
-              value: surveyData[0].total_respuestas?.toString() ?? "",
-              message: "Total de respuestas",
+              message: surveyData[index]?.opcion ?? "",
+              value: surveyData[index]?.cantidad?.toString() ?? "",
             };
-          }
+          });
+        } else {
+          // Ordenamos por cantidad (mayor a menor)
+          const sorted = [...surveyData].sort(
+            (a, b) => b.cantidad! - a.cantidad!
+          );
 
-          return {
-            ...card,
-            message: surveyData[index]?.opcion ?? "",
-            value: surveyData[index]?.cantidad?.toString() ?? "",
-          };
-        });
+          const max = sorted[0];
+          const min = sorted[sorted.length - 1];
+          const total = sorted[0].total_respuestas;
+
+          updatedCards = cardsInfo.map((card, index) => {
+            if (index === 0) {
+              return {
+                ...card,
+                title: "Opción con más respuestas",
+                message: max.opcion ?? "",
+                value: max.cantidad?.toString() ?? "",
+              };
+            }
+            if (index === 1) {
+              return {
+                ...card,
+                title: "Opción con menos respuestas",
+                message: min.opcion ?? "",
+                value: min.cantidad?.toString() ?? "",
+              };
+            }
+            if (index === 2) {
+              return {
+                ...card,
+                value: total?.toString() ?? "",
+              };
+            }
+
+            return card;
+          });
+        }
 
         setCardsInfo(updatedCards);
       }
