@@ -4,7 +4,7 @@ import type { IntervaloConfianza } from '../../../data/tools/tools'
 const StaticsTable = ({ optionFilter, ResultIC }: { optionFilter: IAnswer | undefined, ResultIC: IntervaloConfianza }) => {
     return (
         <div className='w-[500px] p-7 bg-[#212741] rounded-lg shadow-xl flex flex-col gap-4  max-lg:w-auto max-sm:overflow-y-scroll'>
-            <p className='text-xl font-bold text-white'>Intervalo de confianza de la muestra <label className='underline underline-offset-4'>({optionFilter?.opcion ?? '0'})</label></p>
+            <p className='text-xl font-bold text-white'>Intervalo de confianza poblacional <label className='underline underline-offset-4'>({optionFilter?.opcion ?? '0'})</label></p>
             <div className="relative overflow-x-auto">
                 <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                     <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">

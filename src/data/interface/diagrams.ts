@@ -4,8 +4,8 @@ export interface DataDiagrams {
     datasets: {
         label: string;
         data: string[];
-        backgroundColor: string;
-        borderColor: string;
+        backgroundColor: string | string[];
+        borderColor: string | string[];
         // borderWidth: number;
     }[];
 }
@@ -13,7 +13,13 @@ export interface DataDiagrams {
 export interface OptionsDiagrams {
     responsive: boolean;
     plugins: {
-        title: {
+        legend?: {
+            position: "right" | "left" | "top" | "bottom" | "center" | "chartArea" ;
+        };
+        tooltip?: {
+            enabled: boolean;
+        }
+        title?: {
             display: boolean;
             text: string;
             color: string;
@@ -23,7 +29,7 @@ export interface OptionsDiagrams {
             };
         };
     };
-    scales: {
+    scales?: {
         x: {
             ticks: {
                 color: string;
@@ -42,4 +48,16 @@ export interface OptionsDiagrams {
             },
         };
     };
+}
+
+
+export interface DataPieDiagram {
+    labels: string[],
+    datasets: {
+        label: string,
+        data: string[],
+        backgroundColor: string[] | string,
+        borderColor: string[] | string,
+        borderWidth: number,
+    }[],
 }

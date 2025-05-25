@@ -1,5 +1,4 @@
 
-import { Pie } from 'react-chartjs-2';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend, CategoryScale, LinearScale, BarElement, Title, LineElement, PointElement, } from 'chart.js';
 import type { IOption } from '../../shared/components/select/select';
 import Select from '../../shared/components/select/select';
@@ -13,7 +12,7 @@ import TotalAnswers from './components/TotalAnswers';
 import DiagramsModuleFour from './components/DiagramsModuleFour';
 import StaticsTable from './components/StaticsTable';
 import { CalculateIC } from '../../data/tools/tools';
-import HeaderCards from './components/HeaderCards';
+import SectionPieDiagram from './components/SectionPieDiagram';
 
 ChartJS.register(ArcElement, BarElement, LineElement, CategoryScale, LinearScale, PointElement, Title, Tooltip, Legend)
 
@@ -35,7 +34,7 @@ const Module4 = () => {
         setOptionFilter(option[0])
     };
 
-    const data = {
+    const dataPieDiagram = {
         labels: answersFilter.map((ans) => ans.opcion),
         datasets: [
             {
@@ -58,7 +57,7 @@ const Module4 = () => {
         ],
     };
 
-    const options = {
+    const optionsPieDiagram = {
         responsive: true,
         plugins: {
             legend: {
@@ -172,9 +171,6 @@ const Module4 = () => {
             </div>
             {answersFilter.length > 0 && (
                 <div className='bg-[#13132F] rounded-2xl m-10 p-10 overflow-auto max-sm:p-4 max-sm:m-0 max-sm:mt-3'>
-                    {/* CARDS VARIANZA, DESVIACION Y MODA */}
-                    <HeaderCards data={varianzaDesviacionModa} />
-
                     <div className='w-full flex gap-7 max-lg:flex-col'>
                         {/* CARDS */}
                         <TotalAnswers data={answersFilter} />
@@ -186,9 +182,11 @@ const Module4 = () => {
                         <div className='flex flex-col gap-7 w-auto'>
                             <StaticsTable optionFilter={optionFilter} ResultIC={ResultIC} />
 
-                            <div className='w-[500px] h-[375px] px-7 bg-[#212741] rounded-lg shadow-xl flex justify-center items-center max-lg:w-auto '>
-                                <Pie data={data} options={options} />
-                            </div>
+                        {/* DIAGRAMA DE PIE Y CARS PARA VARIANZA, DESVIACION Y MODA */}
+                            <SectionPieDiagram
+                                dataPie={dataPieDiagram}
+                                optionsPie={optionsPieDiagram}
+                                dataVarDesvMode={varianzaDesviacionModa} />
                         </div>
                     </div>
                 </div>
