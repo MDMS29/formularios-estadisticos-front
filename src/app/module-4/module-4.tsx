@@ -163,7 +163,7 @@ const Module4 = () => {
     return (
         <div className="w-full">
             <div className=' bg-[#13132F] flex justify-between items-center h-[5%] rounded-2xl m-10 p-10 max-sm:flex-wrap-reverse max-sm:p-4 max-sm:m-0'>
-                <p className="text-4xl font-bold text-center text-white max-sm:mt-3">{answersFilter.length > 0 ? answersFilter[0].pregunta : 'Seleccione una pregunta'}</p>
+                <p className="text-3xl font-bold text-center text-white max-sm:mt-3">{answersFilter.length > 0 ? answersFilter[0].pregunta : 'Seleccione una pregunta'}</p>
                 <div className='flex gap-5 flex-wrap'>
                     <Select options={ListQuestions} onChange={handleSelectChange} />
                     <Select options={ListAnswersFilter} onChange={handleSelectChangeOption} disabled={notSelectedQuestion} className='max-sm:w-full' />
@@ -182,7 +182,7 @@ const Module4 = () => {
                         <div className='flex flex-col gap-7 w-auto'>
                             <StaticsTable optionFilter={optionFilter} ResultIC={ResultIC} />
 
-                        {/* DIAGRAMA DE PIE Y CARS PARA VARIANZA, DESVIACION Y MODA */}
+                            {/* DIAGRAMA DE PIE Y CARS PARA VARIANZA, DESVIACION Y MODA */}
                             <SectionPieDiagram
                                 dataPie={dataPieDiagram}
                                 optionsPie={optionsPieDiagram}

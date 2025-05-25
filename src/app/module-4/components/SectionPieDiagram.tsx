@@ -5,8 +5,8 @@ import VarDesvModeCards from './VarDesvModeCards'
 
 const SectionPieDiagram = ({ dataPie, optionsPie, dataVarDesvMode }: { dataPie: DataPieDiagram, optionsPie: OptionsDiagrams, dataVarDesvMode: IVarianzaDesviacionModa }) => {
     return (
-        <div className='flex max-lg:flex-col gap-3 max-w-[700px]'>
-            <div className='px-7 bg-[rgb(33,39,65)] rounded-lg shadow-xl flex justify-center items-center max-lg:w-auto flex-1'>
+        <div className='flex max-lg:flex-col gap-3 max-h-[400px] min-lg:max-w-[300px] '>
+            <div className='px-7 bg-[rgb(33,39,65)] rounded-lg shadow-xl flex justify-center items-center min-lg:max-w-[320px]'>
                 <Pie data={dataPie} options={optionsPie} />
             </div>
 
